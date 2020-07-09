@@ -1,0 +1,69 @@
+{% extends "posts/post_base.html" %}
+{% load humanize %}
+
+{% block content %}
+<div class="col-md-4">
+	{% if request.user.is_authenticated %}
+	<div class="card card-with-shadow">
+		<div class="content">
+			<h5 class="title">Your Groups</h5>
+			<ul class="list-unstyled">
+				{# {% get_user_groups as user_groups %}#}
+				{% for member_group in get_user_groups %}
+				<li class="group li-with-bullet">
+					<a href="{% url 'groups:single' slug=member_group.group.slug %}">{{ member_group.group.name }}</a>
+				</li>
+				{% endfor %}
+
+			</ul>
+		</div>
+	</div>
+	{% endif %}
+	<div class="card card-with-shadow">
+		<div class="content">
+			<h5 class="title">All groups</h5>
+			<ul class="list-unstyled">
+				{# {% get_other_groups as other_groups %}#}
+				{% for other_group in get_other_groups %}
+					<li class="group li-with-bullet"><a href="{% url 'groups:single' slug=other_group.slug %}">{{ other_group.name }}</a></li>
+				{% endfor %}
+			</ul>
+			
+
+
+
+		</div>
+	</div>
+</div>
+
+<div class="col-md-8">
+	{% for post in post_list %}
+	<div class="post media">
+        <h3>{{ post.message_html|safe }}</h3>
+        <div class="media-body">
+            <strong>{{ post.user.username }}</strong>
+            <h5 class="media-heading">
+                <span class="username"><a href="{% url 'posts:for_user' username=post.user.username %}">@{{ post.user.username }}</a></span>
+                <time class="time"><a href="{% url 'posts:single' username=post.user.username pk=post.pk %}">{{ post.created_at }}</a></time>
+                {% if post.group %}
+                <span class="group-name">in <a href="#">{{ post.group.name }}</a></span>
+                {% endif %}
+            </h5>
+    
+    
+    
+    
+            <div class="media-footer">
+                {% if user.is_authenticated and post.user == user and not hide_delete %}
+                    <a href="{% url 'posts:delete' pk=post.pk %}" title="delete" class="btn btn-simple">
+                        <span class="glyphicon glyphicon-remove text-danger" aria-hidden="true"></span>
+                        <span class="text-danger icon-label">Delete</span>
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    
+	{% endfor %}
+</div>
+{% endblock %}

@@ -29,9 +29,9 @@
 
           <ul class="nav navbar-nav navbar-right">
             {% if user.is_authenticated %}
-                  <li><a href="#">Post</a></li>
-                  <li><a href="#">Spaces</a></li>
-                  <li><a href="#" class="btn btn-simple">Create Spaces</a></li>
+                  <li><a href="{% url 'posts:create' %}" class="btn btn-simple">Post</a></li>
+                  <li><a href="{% url 'groups:all' %}" class="btn btn-simple">Spaces</a></li>
+                  <li><a href="{% url 'groups:create' %}" class="btn btn-simple">Create Spaces</a></li>
                   <li><a href="{% url 'userAuth:logout' %}" class="btn btn-simple">Log out</a></li>
             {% else %}
                   <li><a href="#"class="btn btn-simple">Groups</a></li>
