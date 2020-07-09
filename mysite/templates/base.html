@@ -16,8 +16,7 @@
 
 
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
-
-    <link rel="stylesheet" href="{% static 'css/master.css'%}">
+    <link rel="stylesheet" href="{% static 'mysite/css/master.css'%}">
 
   </head>
 
@@ -25,18 +24,18 @@
     <nav class="navbar  mynav" role="navigation" id="navbar">
       <div class="container">
 
-        <a class="navbar-brand mynav" href="{% url 'index' %}">Tech Social</a>
+        <a class="navbar-brand mynav" href="{% url 'index' %}" style="margin-top: 7px; font-size:40px;">Tech Social</a>
 
           <ul class="nav navbar-nav navbar-right">
             {% if user.is_authenticated %}
-                  <li><a href="{% url 'posts:create' %}" class="btn btn-simple">Post</a></li>
-                  <li><a href="{% url 'groups:all' %}" class="btn btn-simple">Spaces</a></li>
-                  <li><a href="{% url 'groups:create' %}" class="btn btn-simple">Create Spaces</a></li>
-                  <li><a href="{% url 'userAuth:logout' %}" class="btn btn-simple">Log out</a></li>
+                  <li><a href="{% url 'posts:create' %}" class="btn btn-simple" style="margin-top: 7px; font-size:20px;">Post</a></li>
+                  <li><a href="{% url 'groups:all' %}" class="btn btn-simple" style="margin-top: 7px; font-size:20px;">Spaces</a></li>
+                  <li><a href="{% url 'groups:create' %}" class="btn btn-simple" style="margin-top: 7px; font-size:20px;">Create Space</a></li>
+                  <li><a href="{% url 'userAuth:logout' %}" class="btn btn-simple" style="margin-top: 7px; font-size:20px;">Log out</a></li>
             {% else %}
                   <li><a href="#"class="btn btn-simple">Groups</a></li>
-                  <li><a href="{% url  'userAuth:login' %}" class="btn btn-simple">Log in</a></li>
-                  <li><a href="{% url 'userAuth:signup' %}" class="btn btn-simple">Sign up</a></li>
+                  <li><a href="{% url  'userAuth:login' %}" class="btn btn-simple" style="margin-top: 7px; font-size:20px;">Log in</a></li>
+                  <li><a href="{% url 'userAuth:signup' %}" class="btn btn-simple" style="margin-top: 7px; font-size:20px;">Sign up</a></li>
             {% endif %}
           </ul>
 
@@ -50,6 +49,7 @@
           {% endblock %}
 
         </div>
-
+        <canvas id="canvas"></canvas>
   </body>
+  <script src="{% static 'mysite/js/master.js' %}" type="text/javascript" ></script>
 </html>

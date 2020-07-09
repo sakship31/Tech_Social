@@ -1,0 +1,11 @@
+body {
+  margin: 0;
+  overflow: hidden;
+  background-color: black;
+  color:white;
+}
+
+#navbar{
+  height: 50px;
+  font-size: medium;
+}
