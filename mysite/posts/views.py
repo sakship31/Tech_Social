@@ -19,28 +19,13 @@ from django.contrib.auth import get_user_model
 User = get_user_model()
 
 class CreatePost(LoginRequiredMixin, SelectRelatedMixin, generic.CreateView):
-    # form_class = forms.PostForm
     fields = ('message',)
     model = models.Post
-    # def get_queryset(self):
-    #     # group = get_object_or_404(Group,pk=request.get('pk'))
-
-    #     # try:
-    #     #     GroupMember.objects.create(user=self.request.user,group=group)
-
-    #     # except IntegrityError:
-    #     #     messages.warning(self.request,("Warning, already a member of {}".format(group.name)))
-
-    #     # else:
-    #     #     messages.success(self.request,"You are now a member of the {} group.".format(group.name))
-
-    #     return super().get(request, *args, **kwargs)
-
 
     def form_valid(self, form):
         self.object = form.save(commit=False)
         self.object.user = self.request.user
-        self.object.group=group
+        self.object.group=get_object_or_404(Group,pk=self.kwargs.get('pk'))
         self.object.save()
         return super().form_valid(form)
 

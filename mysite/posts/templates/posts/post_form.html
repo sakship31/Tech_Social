@@ -4,7 +4,7 @@
 
 {% block content %}
 <h4>Create New Post</h4>
-<form method="POST" action="{% url 'posts:create1' pk=group.pk %}" id="postForm">
+<form method="POST" action="" id="postForm">
 	{% csrf_token %}
 	{% bootstrap_form form %}
 	<input type="submit" value="Post" class="btn btn-primary btn-large">
