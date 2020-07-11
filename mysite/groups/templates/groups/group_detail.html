@@ -10,7 +10,8 @@
 
 				{% if user in group.members.all %}
 					<a href="{% url 'groups:leave' slug=group.slug %}" class="btn btn-lg btn-fill btn-warning"><span class="glyphicon glyphicon-remove-circle"></span> Leave</a>
-				{% else %}
+                    <a href="{% url 'posts:create1' pk=group.pk %}" class="btn btn-lg btn-fill btn-warning" ><span class="glyphicon glyphicon-ok-circle"></span>Post</a></li>
+                    {% else %}
 					<a href="{% url 'groups:join' slug=group.slug %}" class="btn btn-lg btn-fill btn-warning"><span class="glyphicon glyphicon-ok-circle"></span> Join</a>
 				{% endif %}
 
@@ -28,13 +29,9 @@
         <div class="post media">
             <h3>{{ post.message_html|safe }}</h3>
             <div class="media-body">
-                <strong>{{ post.user.username }}</strong>
                 <h5 class="media-heading">
                     <span class="username"><a href="{% url 'posts:for_user' username=post.user.username %}">@{{ post.user.username }}</a></span>
                     <time class="time"><a href="{% url 'posts:single' username=post.user.username pk=post.pk %}">{{ post.created_at }}</a></time>
-                    {% if post.group %}
-                    <span class="group-name">in <a href="#">{{ post.group.name }}</a></span>
-                    {% endif %}
                 </h5>
         
                 <div class="media-footer">

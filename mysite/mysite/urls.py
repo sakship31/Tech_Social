@@ -25,7 +25,7 @@ urlpatterns = [
     path('loggedout/', views.loggedout.as_view(), name="loggedout"),
     path('userAuth/', include('userAuth.urls',namespace="userAuth")),
     path('accounts/', include("django.contrib.auth.urls")),
-    url('posts/', include("posts.urls", namespace="posts")),
-    url('groups/',include("groups.urls", namespace="groups")),
+    url('posts/', include('posts.urls', namespace="posts")),
+    url('groups/',include('groups.urls', namespace="groups")),
 ]
 

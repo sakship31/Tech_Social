@@ -28,7 +28,6 @@
 
           <ul class="nav navbar-nav navbar-right">
             {% if user.is_authenticated %}
-                  <li><a href="{% url 'posts:create' %}" class="btn btn-simple" style="margin-top: 7px; font-size:20px;">Post</a></li>
                   <li><a href="{% url 'groups:all' %}" class="btn btn-simple" style="margin-top: 7px; font-size:20px;">Spaces</a></li>
                   <li><a href="{% url 'groups:create' %}" class="btn btn-simple" style="margin-top: 7px; font-size:20px;">Create Space</a></li>
                   <li><a href="{% url 'userAuth:logout' %}" class="btn btn-simple" style="margin-top: 7px; font-size:20px;">Log out</a></li>

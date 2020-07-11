@@ -7,6 +7,8 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.http import Http404
 from django.views import generic
+from django.shortcuts import get_object_or_404
+from groups.models import Group
 
 from braces.views import SelectRelatedMixin
 
@@ -15,6 +17,32 @@ from . import models
 
 from django.contrib.auth import get_user_model
 User = get_user_model()
+
+class CreatePost(LoginRequiredMixin, SelectRelatedMixin, generic.CreateView):
+    # form_class = forms.PostForm
+    fields = ('message',)
+    model = models.Post
+    # def get_queryset(self):
+    #     # group = get_object_or_404(Group,pk=request.get('pk'))
+
+    #     # try:
+    #     #     GroupMember.objects.create(user=self.request.user,group=group)
+
+    #     # except IntegrityError:
+    #     #     messages.warning(self.request,("Warning, already a member of {}".format(group.name)))
+
+    #     # else:
+    #     #     messages.success(self.request,"You are now a member of the {} group.".format(group.name))
+
+    #     return super().get(request, *args, **kwargs)
+
+
+    def form_valid(self, form):
+        self.object = form.save(commit=False)
+        self.object.user = self.request.user
+        self.object.group=group
+        self.object.save()
+        return super().form_valid(form)
 
 
 class PostList(SelectRelatedMixin, generic.ListView):
@@ -53,21 +81,7 @@ class PostDetail(SelectRelatedMixin, generic.DetailView):
         )
 
 
-class CreatePost(LoginRequiredMixin, SelectRelatedMixin, generic.CreateView):
-    # form_class = forms.PostForm
-    fields = ('message','group')
-    model = models.Post
 
-    # def get_form_kwargs(self):
-    #     kwargs = super().get_form_kwargs()
-    #     kwargs.update({"user": self.request.user})
-    #     return kwargs
-
-    def form_valid(self, form):
-        self.object = form.save(commit=False)
-        self.object.user = self.request.user
-        self.object.save()
-        return super().form_valid(form)
 
 
 class DeletePost(LoginRequiredMixin, SelectRelatedMixin, generic.DeleteView):

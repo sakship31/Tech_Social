@@ -11,6 +11,7 @@ from django.views import generic
 from groups.models import Group,GroupMember
 from . import models
 
+
 class CreateGroup(LoginRequiredMixin, generic.CreateView):
     fields = ("name", "description")
     model = Group
