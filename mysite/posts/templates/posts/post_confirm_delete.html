@@ -6,7 +6,8 @@
 
 <div class="posts">
 	<div class="post media">
-		<h3>{{ post.message_html|safe }}</h3>
+		<h3>{{ post.question }}</h3>
+		<h3>{{ post.description_html|safe }}</h3>
 		<div class="media-body">
 			<strong>{{ post.user.username }}</strong>
 			<h5 class="media-heading">

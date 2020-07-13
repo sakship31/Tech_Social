@@ -40,5 +40,20 @@ class Post(models.Model):
         ordering = ["-created_at"]
         unique_together = ["user", "question"]
 
+class Comment(models.Model):
+    post = models.ForeignKey(Post, related_name='comments',on_delete=models.CASCADE)
+    text = models.TextField()
+    text_html = models.TextField(editable=False)
+    user = models.ForeignKey(User, related_name="comments",on_delete=models.CASCADE)
 
+    def save(self, *args, **kwargs):
+        self.text_html = misaka.html(self.text)  
+        super().save(*args, **kwargs)
+
+    def get_absolute_url(self):
+        # return reverse("posts:single" , kwargs={"slug": self.slug})
+        return reverse("posts:single" , kwargs={"username":self.post.user.username,"pk":self.post.pk})
+
+    def __str__(self):
+        return self.text
 

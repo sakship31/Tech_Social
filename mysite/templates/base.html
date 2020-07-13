@@ -32,7 +32,6 @@
                   <li><a href="{% url 'groups:create' %}" class="btn btn-simple" style="margin-top: 7px; font-size:20px;">Create Space</a></li>
                   <li><a href="{% url 'userAuth:logout' %}" class="btn btn-simple" style="margin-top: 7px; font-size:20px;">Log out</a></li>
             {% else %}
-                  <li><a href="#"class="btn btn-simple">Groups</a></li>
                   <li><a href="{% url  'userAuth:login' %}" class="btn btn-simple" style="margin-top: 7px; font-size:20px;">Log in</a></li>
                   <li><a href="{% url 'userAuth:signup' %}" class="btn btn-simple" style="margin-top: 7px; font-size:20px;">Sign up</a></li>
             {% endif %}

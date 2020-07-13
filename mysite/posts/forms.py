@@ -18,3 +18,11 @@ class PostForm(forms.ModelForm):
     #                 pk__in=user.groups.values_list("group__pk")
     #             )
     #         )
+
+
+
+class CommentForm(forms.ModelForm):
+    class Meta:
+        # fields = ("message", "group")
+        fields = ('text',)
+        model = models.Comment

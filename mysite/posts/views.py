@@ -30,6 +30,18 @@ class CreatePost(LoginRequiredMixin, SelectRelatedMixin, generic.CreateView):
         return super().form_valid(form)
 
 
+class CreateComment(LoginRequiredMixin, SelectRelatedMixin, generic.CreateView):
+    fields = ('text',)
+    model = models.Comment
+
+    def form_valid(self, form):
+        self.object = form.save(commit=False)
+        self.object.user = self.request.user
+        self.object.post=get_object_or_404(models.Post,pk=self.kwargs.get('pk'))
+        self.object.save()
+        return super().form_valid(form)
+
+
 class PostList(SelectRelatedMixin, generic.ListView):
     model = models.Post
     select_related = ("user", "group")
@@ -67,6 +79,18 @@ class PostDetail(SelectRelatedMixin, generic.DetailView):
 
 
 
+class DeleteComment(LoginRequiredMixin, SelectRelatedMixin, generic.DeleteView):
+    model = models.Comment
+    select_related = ("user", "post")
+    success_url = reverse_lazy("posts:all")
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        return queryset.filter(user_id=self.request.user.id)
+
+    def delete(self, *args, **kwargs):
+        messages.success(self.request, "Comment Deleted")
+        return super().delete(*args, **kwargs)
 
 
 class DeletePost(LoginRequiredMixin, SelectRelatedMixin, generic.DeleteView):
@@ -81,3 +105,5 @@ class DeletePost(LoginRequiredMixin, SelectRelatedMixin, generic.DeleteView):
     def delete(self, *args, **kwargs):
         messages.success(self.request, "Post Deleted")
         return super().delete(*args, **kwargs)
+
+

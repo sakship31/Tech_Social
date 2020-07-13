@@ -1,0 +1,38 @@
+{% extends "posts/post_base.html" %}
+
+
+{% block content %}
+<h3>Are you sure you want to delete this comment?</h3>
+
+<div class="posts">
+	<div class="post media">
+		<h3>{{ comment.text }}</h3>
+		<div class="media-body">
+			<strong>{{ comment.user.username }}</strong>
+			<h5 class="media-heading">
+				<span class="username"><a href="#">@{{ comment.user.username }}</a></span>
+				<time class="time"><a href="#">{{ comment.created_at }}</a></time>
+			</h5>
+	
+	
+		
+			<div class="media-footer">
+				{% if user.is_authenticated and comment.user == user and not hide_delete %}
+					<a href="{% url 'posts:delete1' pk=comment.pk %}" title="delete" class="btn btn-simple">
+						<span class="glyphicon glyphicon-remove text-danger" aria-hidden="true"></span>
+						<span class="text-danger icon-label">Delete</span>
+					</a>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+	
+</div>
+
+<form method="POST">
+	{% csrf_token %}
+	<input type="submit" value="Confirm Delete" class="btn btn-danger btn-large">
+	<a href="#" class="btn btn-simple btn-large btn-default">Cancel</a>
+</form>
+
+{% endblock %}

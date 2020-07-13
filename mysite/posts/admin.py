@@ -2,4 +2,6 @@ from django.contrib import admin
 
 from . import models
 
-admin.site.register(models.Post)
+myModels = [models.Post,models.Comment]  # iterable list
+admin.site.register(myModels)
+
