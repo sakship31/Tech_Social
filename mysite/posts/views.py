@@ -19,7 +19,7 @@ from django.contrib.auth import get_user_model
 User = get_user_model()
 
 class CreatePost(LoginRequiredMixin, SelectRelatedMixin, generic.CreateView):
-    fields = ('message',)
+    fields = ('question','description')
     model = models.Post
 
     def form_valid(self, form):

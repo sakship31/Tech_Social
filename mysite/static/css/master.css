@@ -24,3 +24,7 @@ body {
   user-select: none;
   font-family: Arial;
 }
+
+#try{
+  overflow: auto;
+}

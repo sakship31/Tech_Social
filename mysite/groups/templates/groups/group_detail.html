@@ -27,7 +27,7 @@
 
 		{% for post in group.posts.all %}
         <div class="post media">
-            <h3>{{ post.message_html|safe }}</h3>
+            <h3>{{ post.question }}</h3>
             <div class="media-body">
                 <h5 class="media-heading">
                     <span class="username"><a href="{% url 'posts:for_user' username=post.user.username %}">@{{ post.user.username }}</a></span>

@@ -13,15 +13,18 @@ User = get_user_model()
 class Post(models.Model):
     user = models.ForeignKey(User, related_name="posts",on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now=True)
-    message = models.TextField()
-    message_html = models.TextField(editable=False)
+    question = models.CharField(max_length=255)
+    # question_html = models.TextField(editable=False)
+    description=models.TextField(blank=True, default='')
+    description_html = models.TextField(editable=False)
     group = models.ForeignKey(Group, related_name="posts",null=True, blank=True,on_delete=models.CASCADE,)
 
     def __str__(self):
-        return self.message
+        return self.question
 
     def save(self, *args, **kwargs):
-        self.message_html = misaka.html(self.message)
+        self.question_html = misaka.html(self.question)
+        self.description_html = misaka.html(self.description)  
         super().save(*args, **kwargs)
 
     def get_absolute_url(self):
@@ -35,5 +38,7 @@ class Post(models.Model):
 
     class Meta:
         ordering = ["-created_at"]
-        unique_together = ["user", "message"]
+        unique_together = ["user", "question"]
+
+
 

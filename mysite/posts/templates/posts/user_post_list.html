@@ -6,10 +6,10 @@
 	<p>Post History</p>
 </div>
 
-<div class="col-md-8">
+<div class="col-md-8" >
 	{% for post in post_list %}
-	<div class="post media">
-		<h3>{{ post.message_html|safe }}</h3>
+	<div class="post media" >
+		<h3>{{ post.question }}</h3>
 		<div class="media-body">
 			<strong>{{ post.user.username }}</strong>
 			<h5 class="media-heading">
