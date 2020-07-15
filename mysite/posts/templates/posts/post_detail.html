@@ -3,16 +3,12 @@
 {% block content %}
 <div class="col-md-8">
     <div class="post media">
-        <h3>{{ post.question }}</h3>
-        <h3>{{ post.description_html|safe }}</h3>
+        <div class="post media list-group-item" style="margin-top: 9px;"><h3 class="title list-group-item-heading" style="color: black !important; margin-bottom: 10px;font-size: large;">{{ post.question }}</h3></div>
+        <div class="post media list-group-item" style="margin-top: 9px;"><h3 class="title list-group-item-heading" style="color: black !important; margin-bottom: 10px !important; font-size: medium;">{{ post.description_html|safe }}</h3></div>
         <div class="media-body">
-            <strong>{{ post.user.username }}</strong>
-            <h5 class="media-heading">
+            <h5 class="media-heading" style="margin-top: 7px;">
                 <span class="username"><a href="{% url 'posts:for_user' username=post.user.username %}">@{{ post.user.username }}</a></span>
                 <time class="time"><a href="{% url 'posts:single' username=post.user.username pk=post.pk %}">{{ post.created_at }}</a></time>
-                {% if post.group %}
-                <span class="group-name">in <a href="#">{{ post.group.name }}</a></span>
-                {% endif %}
             </h5>
     
     
@@ -28,8 +24,8 @@
                 <a class="btn btn-primary btn-comment" href="{% url 'posts:create2' pk=post.pk %}">Add comment</a>
             </div>
             {% for comment in post.comments.all %}
-            <div class="post media">
-                <h3>{{ comment.text }}</h3>
+            <div class="post media list-group-item" style="margin-top: 9px;background-color: rgb(219, 213, 204);" >
+                <h3 class="title list-group-item-heading" style="color: black !important; margin-bottom: 10px !important; font-size: medium;">{{ comment.comment }}</h3>
                 <div class="media-body">
                     <h5 class="media-heading">
                         <span class="username"><a href="{% url 'posts:for_user' username=post.user.username %}">@{{ comment.user.username }}</a></span>

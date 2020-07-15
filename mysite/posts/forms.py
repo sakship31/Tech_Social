@@ -9,20 +9,11 @@ class PostForm(forms.ModelForm):
         fields = ('question','description')
         model = models.Post
 
-    # def __init__(self, *args, **kwargs):
-    #     user = kwargs.pop("user", None)
-    #     super().__init__(*args, **kwargs)
-    #     if user is not None:
-    #         self.fields["group"].queryset = (
-    #             models.Group.objects.filter(
-    #                 pk__in=user.groups.values_list("group__pk")
-    #             )
-    #         )
 
 
 
 class CommentForm(forms.ModelForm):
     class Meta:
         # fields = ("message", "group")
-        fields = ('text',)
+        fields = ('comment',)
         model = models.Comment

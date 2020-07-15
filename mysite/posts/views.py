@@ -31,7 +31,7 @@ class CreatePost(LoginRequiredMixin, SelectRelatedMixin, generic.CreateView):
 
 
 class CreateComment(LoginRequiredMixin, SelectRelatedMixin, generic.CreateView):
-    fields = ('text',)
+    fields = ('comment',)
     model = models.Comment
 
     def form_valid(self, form):

@@ -42,12 +42,12 @@ class Post(models.Model):
 
 class Comment(models.Model):
     post = models.ForeignKey(Post, related_name='comments',on_delete=models.CASCADE)
-    text = models.TextField()
+    comment = models.TextField()
     text_html = models.TextField(editable=False)
     user = models.ForeignKey(User, related_name="comments",on_delete=models.CASCADE)
 
     def save(self, *args, **kwargs):
-        self.text_html = misaka.html(self.text)  
+        self.text_html = misaka.html(self.comment)  
         super().save(*args, **kwargs)
 
     def get_absolute_url(self):

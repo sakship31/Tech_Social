@@ -1,22 +1,21 @@
 {% extends "posts/post_base.html" %}
 
 {% block content %}
-<div class="col-md-4">
-	<h1>@{{ post_user.username }}</h1>
-	<p>Post History</p>
+<div class="col-md-2">
+	<h3>@{{ post_user.username }}</h3>
+	<p>Your Post History</p>
 </div>
 
-<div class="col-md-8" >
+<div class="col-md-10" >
 	{% for post in post_list %}
-	<div class="post media" >
-		<h3>{{ post.question }}</h3>
+	<div class="post media post media list-group-item" style="margin-top: 9px;background-color: bisque;" >
+		<h3 class="title list-group-item-heading" style="color: black !important; margin-bottom: 10px;font-size: large;"><a href="{% url 'posts:single' username=post.user.username pk=post.pk %}">{{ post.question }}</a></h3>
 		<div class="media-body">
-			<strong>{{ post.user.username }}</strong>
 			<h5 class="media-heading">
 				<span class="username"><a href="{% url 'posts:for_user' username=post.user.username %}">@{{ post.user.username }}</a></span>
-				<time class="time"><a href="{% url 'posts:single' username=post.user.username pk=post.pk %}">{{ post.created_at }}</a></time>
+				<time class="time" style="color: black;">{{ post.created_at }}</time>
 				{% if post.group %}
-				<span class="group-name">in <a href="#">{{ post.group.name }}</a></span>
+				<span class="group-name" style="color: black;">in <a href="{% url 'groups:single' slug=post.group.slug %}">{{ post.group.name }}</a></span>
 				{% endif %}
 			</h5>
 	

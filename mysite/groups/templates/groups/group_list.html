@@ -1,7 +1,7 @@
 {% extends "groups/group_base.html" %}
 
 {% block content %}
-<div class="col-md-4">
+<div class="col-md-3 intro" style="margin-top: 5px;">
 	<div class="content">
 		{% if user.is_authenticated %}
 		<h2>
@@ -12,7 +12,7 @@
     {% endif %}
 			<h2>Groups</h2>
 
-			<p>Welcome to the Groups Page! Select a Group with a shared interest!</p>
+			<p>Join a Group with a shared interest and be the part of the community!</p>
 	</div>
 	{% if user.is_authenticated %}
 	<a href="{% url 'groups:create' %}" class="btn btn-md btn-fill btn-warning"><span class="glyphicon glyphicon-plus-sign"></span> Create New Group!</a>
@@ -21,11 +21,11 @@
 </div>
 
 
-<div class="col-md-8">
+<div class="col-md-9 intro" style="margin-top: 6px;">
 	<div class="list-group">
 		{% for group in object_list %}
 
-		  <a class="list-group-item" href="{% url 'groups:single' slug=group.slug %}">
+		  <a class="list-group-item" style="margin-bottom: 5px;" href="{% url 'groups:single' slug=group.slug %}">
 			     <h3 class="title list-group-item-heading">{{ group.name }}</h3>
 			<div class="list-group-item-text container-fluid">
 				{{ group.description_html|safe }}

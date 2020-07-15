@@ -1,5 +1,5 @@
 body {
-  margin: 0;
+  margin-left: 0px;
   overflow: hidden;
   background-color: black;
   color:white;
@@ -9,3 +9,21 @@ body {
   height: 50px;
   font-size: medium;
 }
+
+.intro{
+  margin-top: 500px;
+}
+
+
+#note {
+  position: absolute;
+  color: rgba(249,241,204,1);
+  margin-left: 0px;
+  right: 0;
+  bottom: 20px;
+  margin: auto;
+  text-align: center;
+  user-select: none;
+  font-family: Arial;
+}
+
