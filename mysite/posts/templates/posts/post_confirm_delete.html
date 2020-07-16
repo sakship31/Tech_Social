@@ -5,30 +5,18 @@
 <h3>Are you sure you want to delete this post?</h3>
 
 <div class="posts">
-	<div class="post media">
-		<h3>{{ post.question }}</h3>
-		<h3>{{ post.description_html|safe }}</h3>
+	<div class="post media post media list-group-item">
+		<h3 class="title list-group-item-heading" style="color: black !important; margin-bottom: 10px;"><a href="{% url 'posts:single' username=post.user.username pk=post.pk %}"></a>{{ post.question }}</a></h3>
+		<h3 class="title list-group-item-heading" style="color: black !important; margin-bottom: 10px;font-size: medium;">{{ post.description_html|safe }}</h3>
 		<div class="media-body">
-			<strong>{{ post.user.username }}</strong>
 			<h5 class="media-heading">
 				<span class="username"><a href="{% url 'posts:for_user' username=post.user.username %}">@{{ post.user.username }}</a></span>
-				<time class="time"><a href="{% url 'posts:single' username=post.user.username pk=post.pk %}">{{ post.created_at }}</a></time>
+				<time class="time" style="color: black !important; margin-bottom: 10px;">{{ post.created_at }}</time>
 				{% if post.group %}
-				<span class="group-name">in <a href="#">{{ post.group.name }}</a></span>
+				<span class="group-name" style="color: black !important; margin-bottom: 10px;">in <a href="{% url 'groups:single' slug=post.group.slug %}">{{ post.group.name }}</a></span>
 				{% endif %}
 			</h5>
-	
-	
-	
-	
-			<div class="media-footer">
-				{% if user.is_authenticated and post.user == user and not hide_delete %}
-					<a href="{% url 'posts:delete' pk=post.pk %}" title="delete" class="btn btn-simple">
-						<span class="glyphicon glyphicon-remove text-danger" aria-hidden="true"></span>
-						<span class="text-danger icon-label">Delete</span>
-					</a>
-				{% endif %}
-			</div>
+
 		</div>
 	</div>
 	
