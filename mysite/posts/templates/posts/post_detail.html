@@ -4,7 +4,11 @@
 <div class="col-md-8">
     <div class="post media ">
         <div class="post media list-group-item" style="margin-top: 9px;"><h3 class="title list-group-item-heading" style="color: black !important; margin-bottom: 10px;font-size: large;">{{ post.question }}</h3></div>
-        <div class="post media list-group-item" style="margin-top: 9px;"><h3 class="title list-group-item-heading" style="color: black !important; margin-bottom: 10px !important; font-size: medium;">{{ post.description_html|safe }}</h3></div>
+        <div class="post media list-group-item" style="margin-top: 9px; background-color: beige;"><h3 class="title list-group-item-heading" style="color: black !important; margin-bottom: 10px !important; font-size: medium;">{{ post.description_html|safe }}</h3>    
+        {% if post.picture %}
+        <img src="{{ post.picture.url }}" class="img-responsive" style="width: auto; height:auto;float: left;margin-right: 10px; margin-top: 6px;" /> 
+        {%  endif %}
+    </div>  
         <div class="media-body">
             <h5 class="media-heading" style="margin-top: 7px;">
                 <span class="username"><a href="{% url 'posts:for_user' username=post.user.username %}">@{{ post.user.username }}</a></span>
@@ -22,8 +26,11 @@
     
             </div>
             {% for comment in post.comments.all %}
-            <div class="post media list-group-item" style="margin-top: 9px;background-color: rgb(219, 213, 204);" >
+            <div class="post media list-group-item" style="margin-top: 9px;background-color:rgb(182, 179, 175);" >
                 <h3 class="title list-group-item-heading" style="color: black !important; margin-bottom: 10px !important; font-size: medium;">{{ comment.comment }}</h3>
+                {% if comment.pic %}
+                <img src="{{ comment.pic.url }}" class="img-responsive" style="width: auto; height:auto;float: inherit; margin-right: 10px; margin-top: 6px; margin-bottom: 9px;" /> 
+                {% endif %}
                 <div class="media-body">
                     <h5 class="media-heading">
                         <span class="username"><a href="{% url 'posts:for_user' username=post.user.username %}">@{{ comment.user.username }}</a></span>

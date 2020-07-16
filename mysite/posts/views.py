@@ -19,25 +19,29 @@ from django.contrib.auth import get_user_model
 User = get_user_model()
 
 class CreatePost(LoginRequiredMixin, SelectRelatedMixin, generic.CreateView):
-    fields = ('question','description')
+    fields = ('question','description','picture')
     model = models.Post
 
     def form_valid(self, form):
         self.object = form.save(commit=False)
         self.object.user = self.request.user
         self.object.group=get_object_or_404(Group,pk=self.kwargs.get('pk'))
+        if 'picture' in self.request.FILES:
+            self.object.picture=self.request.FILES['picture']
         self.object.save()
         return super().form_valid(form)
 
 
 class CreateComment(LoginRequiredMixin, SelectRelatedMixin, generic.CreateView):
-    fields = ('comment',)
+    fields = ('comment','pic')
     model = models.Comment
 
     def form_valid(self, form):
         self.object = form.save(commit=False)
         self.object.user = self.request.user
         self.object.post=get_object_or_404(models.Post,pk=self.kwargs.get('pk'))
+        if 'pic' in self.request.FILES:
+            self.object.pic=self.request.FILES['pic']
         self.object.save()
         return super().form_valid(form)
 
@@ -82,7 +86,7 @@ class PostDetail(SelectRelatedMixin, generic.DetailView):
 class DeleteComment(LoginRequiredMixin, SelectRelatedMixin, generic.DeleteView):
     model = models.Comment
     select_related = ("user", "post")
-    success_url = reverse_lazy("posts:all")
+    success_url = reverse_lazy("index")
 
     def get_queryset(self):
         queryset = super().get_queryset()
@@ -96,7 +100,7 @@ class DeleteComment(LoginRequiredMixin, SelectRelatedMixin, generic.DeleteView):
 class DeletePost(LoginRequiredMixin, SelectRelatedMixin, generic.DeleteView):
     model = models.Post
     select_related = ("user", "group")
-    success_url = reverse_lazy("posts:all")
+    success_url = reverse_lazy("index")
 
     def get_queryset(self):
         queryset = super().get_queryset()

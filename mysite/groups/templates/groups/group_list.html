@@ -1,7 +1,7 @@
 {% extends "groups/group_base.html" %}
 
 {% block content %}
-<div class="col-md-3 intro" style="margin-top: 5px;">
+<div style="margin-top: 5px;">
 	<div class="content">
 		{% if user.is_authenticated %}
 		<h2>
@@ -21,10 +21,11 @@
 </div>
 
 
-<div class="col-md-9 intro" style="margin-top: 6px;">
+<div class="col-md-6 intro" style="margin-top: 6px;">
+	<h3>Spaces you follow!</h3>
 	<div class="list-group">
 		{% for group in object_list %}
-
+		{% if user in group.members.all %}
 		  <a class="list-group-item" style="margin-bottom: 5px;" href="{% url 'groups:single' slug=group.slug %}">
 			     <h3 class="title list-group-item-heading">{{ group.name }}</h3>
 			<div class="list-group-item-text container-fluid">
@@ -39,8 +40,32 @@
 				</div>
 			</div>
 		</a>
+		{% endif %}
 		{% endfor %}
 	</div>
 </div>
 
+<div class="col-md-6 intro" style="margin-top: 6px;">
+	<h3>Spaces you might be interested in!</h3>
+	<div class="list-group">
+		{% for group in object_list %}
+		{% if user not in group.members.all %}
+		  <a class="list-group-item" style="margin-bottom: 5px;" href="{% url 'groups:single' slug=group.slug %}">
+			     <h3 class="title list-group-item-heading">{{ group.name }}</h3>
+			<div class="list-group-item-text container-fluid">
+				{{ group.description_html|safe }}
+				<div class="row">
+					<div class="col-md-4">
+						<span class="badge">{{ group.members.count }}</span> member{{ group.members.count|pluralize }}
+					</div>
+					<div class="col-md-4">
+						<span class="badge">{{ group.posts.count }}</span> post{{ group.posts.count|pluralize }}
+					</div>
+				</div>
+			</div>
+		</a>
+		{% endif %}
+		{% endfor %}
+	</div>
+</div>
 {% endblock %}

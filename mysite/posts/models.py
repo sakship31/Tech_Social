@@ -17,6 +17,7 @@ class Post(models.Model):
     # question_html = models.TextField(editable=False)
     description=models.TextField(blank=True, default='')
     description_html = models.TextField(editable=False)
+    picture=models.ImageField(upload_to='pics',blank=True)
     group = models.ForeignKey(Group, related_name="posts",null=True, blank=True,on_delete=models.CASCADE,)
 
     def __str__(self):
@@ -45,6 +46,7 @@ class Comment(models.Model):
     created_at = models.DateTimeField(auto_now=True)
     comment = models.TextField()
     text_html = models.TextField(editable=False)
+    pic=models.ImageField(upload_to='pics',blank=True)
     user = models.ForeignKey(User, related_name="comments",on_delete=models.CASCADE)
 
     def save(self, *args, **kwargs):
@@ -56,5 +58,5 @@ class Comment(models.Model):
         return reverse("posts:single" , kwargs={"username":self.post.user.username,"pk":self.post.pk})
 
     def __str__(self):
-        return self.text
+        return self.comment
 

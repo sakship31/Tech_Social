@@ -19,13 +19,13 @@
 
 </div>
 
-<div class="col-md-8">
+<div class="col-md-8 list-group">
 	{% if group.posts.count == 0 %}
 	<h2>No posts in this group yet!</h2>
 
 	{% else %}
-
-		{% for post in group.posts.all %}
+        {% for post in group.posts.all %}
+   
         <div class="post media list-group-item" style="margin-top: 9px;">
             <h3 class="title list-group-item-heading" style="color: black !important; margin-bottom: 10px;"><a href="{% url 'posts:single' username=post.user.username pk=post.pk %}">{{ post.question }}</a></h3>
             <div class="media-body">
@@ -41,8 +41,8 @@
                 </div>
             </div>
         </div>
+    
 		{% endfor %}
-
 	{% endif %}
 </div>
 {% endblock %}

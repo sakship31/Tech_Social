@@ -6,7 +6,7 @@ from posts import models
 class PostForm(forms.ModelForm):
     class Meta:
         # fields = ("message", "group")
-        fields = ('question','description')
+        fields = ('question','description','picture')
         model = models.Post
 
 
@@ -15,5 +15,5 @@ class PostForm(forms.ModelForm):
 class CommentForm(forms.ModelForm):
     class Meta:
         # fields = ("message", "group")
-        fields = ('comment',)
+        fields = ('comment','pic')
         model = models.Comment

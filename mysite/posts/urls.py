@@ -1,7 +1,7 @@
 from django.conf.urls import url
 from django.urls import path
-from . import views
 
+from . import views
 app_name='posts'
 
 urlpatterns = [
@@ -13,3 +13,4 @@ urlpatterns = [
     url(r"comment/delete/(?P<pk>\d+)/$",views.DeleteComment.as_view(),name="delete_comment"),
     url(r"delete/(?P<pk>\d+)/$",views.DeletePost.as_view(),name="delete"),
 ]
+

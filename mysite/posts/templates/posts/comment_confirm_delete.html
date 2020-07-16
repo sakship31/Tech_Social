@@ -9,7 +9,7 @@
 		<h3 class="title list-group-item-heading" style="color: black !important; margin-bottom: 10px;font-size: medium;">{{ comment.comment }}</h3>
 		<div class="media-body">
 			<h5 class="media-heading">
-				<span class="username" style="color: black !important; margin-bottom: 10px;"><a href="{% url 'posts:for_user' username=post.user.username %}">@{{ comment.user.username }}</a></span>
+				<span class="username" style="color: black !important; margin-bottom: 10px;"><a href="{% url 'posts:for_user' username=comment.post.user.username %}">@{{ comment.user.username }}</a></span>
 				<time class="time" style="color: black !important; margin-bottom: 10px;">{{ comment.created_at }}</time>
 			</h5>
 
