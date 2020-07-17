@@ -32,9 +32,9 @@ Tech Social has following features-
 ----------------------------------------------------------------------------------------
 ### Adding comment after joining group ###
 ![](https://github.com/sakship31/Tech_Social/blob/master/image_gifs/add_comment.gif)
-### Check other user's/your post history and delete post ###
+### Check other user's/your post history and delete post the logged in user has created ###
 ![](https://github.com/sakship31/Tech_Social/blob/master/image_gifs/delete_post.gif)
-#### Deleting our comment ####
+#### 'Delete' option is given on the comments logged in user has done ####
 ![](https://github.com/sakship31/Tech_Social/blob/master/image_gifs/delete_comment.gif)
 ### Create Space(Group) ###
 ![](https://github.com/sakship31/Tech_Social/blob/master/image_gifs/Capture3.PNG)
