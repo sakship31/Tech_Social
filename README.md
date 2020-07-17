@@ -42,6 +42,12 @@ Tech Social has following features-
 ![](https://github.com/sakship31/Tech_Social/blob/master/image_gifs/delete_post.gif)
 #### Deleting our comment ####
 ![](https://github.com/sakship31/Tech_Social/blob/master/image_gifs/delete_comment.gif)
+### Groups page ###
+![](https://github.com/sakship31/Tech_Social/blob/master/image_gifs/Capture8.PNG)
+### Posts in group page ###
+![](https://github.com/sakship31/Tech_Social/blob/master/image_gifs/Capture10.PNG)
+### Post detail with comments page ###
+![](https://github.com/sakship31/Tech_Social/blob/master/image_gifs/Capture11.PNG)
 ### Log Out ###
 ![](https://github.com/sakship31/Tech_Social/blob/master/image_gifs/Capture2.PNG)
 ---------------------------------------------------------------------------------------
