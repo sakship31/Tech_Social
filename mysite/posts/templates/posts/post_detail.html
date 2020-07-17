@@ -26,7 +26,7 @@
     
             </div>
             {% for comment in post.comments.all %}
-            <div class="post media list-group-item" style="margin-top: 9px;background-color:rgb(182, 179, 175);" >
+            <div class="post media list-group-item" style="margin-top: 9px;background-color:rgb(201, 198, 194);" >
                 <h3 class="title list-group-item-heading" style="color: black !important; margin-bottom: 10px !important; font-size: medium;">{{ comment.comment }}</h3>
                 {% if comment.pic %}
                 <img src="{{ comment.pic.url }}" class="img-responsive" style="width: auto; height:auto;float: inherit; margin-right: 10px; margin-top: 6px; margin-bottom: 9px;" /> 

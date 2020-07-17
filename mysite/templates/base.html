@@ -23,17 +23,13 @@
   <body style="overflow-y:scroll;max-height:800px;">
     <nav class="navbar  mynav" role="navigation" id="navbar" >
       <div class="container">
-        {% if user.is_authenticated %}
-        <a class="navbar-brand mynav" href="{% url 'posts:for_user' username=user.username %}" style="margin-top: 7px; font-size:40px;">Tech Social</a>
-        {% else %}
-        <a class="navbar-brand mynav" href="{% url 'index' %}" style="margin-top: 7px; font-size:40px;">Tech Social</a>
-        {% endif %}
-
+        <div class="navbar-brand mynav"  style="margin-top: 7px; font-size:40px;color: rgba(7, 137, 243, 0.404);">Tech Social</div>
 
           <ul class="nav navbar-nav navbar-right">
             {% if user.is_authenticated %}
                   <li><a href="{% url 'groups:all' %}" class="btn btn-simple" style="margin-top: 7px; font-size:20px;">Spaces</a></li>
                   <li><a href="{% url 'groups:create' %}" class="btn btn-simple" style="margin-top: 7px; font-size:20px;">Create Space</a></li>
+                  <li><a href="{% url 'posts:for_user' username=user.username %}" class="btn btn-simple"  style="margin-top: 7px; font-size:20px;">Your Posts</a><li>
                   <li><a href="{% url 'userAuth:logout' %}" class="btn btn-simple" style="margin-top: 7px; font-size:20px;">Log out</a></li>
             {% else %}
                   <li><a href="{% url  'userAuth:login' %}" class="btn btn-simple" style="margin-top: 7px; font-size:20px;">Log in</a></li>

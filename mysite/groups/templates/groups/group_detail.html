@@ -33,7 +33,7 @@
                     <span class="username" style="color: black;">By:<a href="{% url 'posts:for_user' username=post.user.username %}">@{{ post.user.username }}</a></span>
                     <time class="time" style="color: black;">{{ post.created_at }}</time>
                 </h5>
-                <span style="color:black;"><span class="badge">{{ post.comments.count }}</span> comments </span>
+                <span style="color:black;"><span class="badge">{{ post.comments.count }}</span> comment{{ post.comments.count|pluralize}}</span>
                 <div class="media-footer">
                     {% if user.is_authenticated and post.user == user and not hide_delete %}
                     <a href="{% url 'posts:delete' pk=post.pk %}" class="btn btn-danger btn-large" style="color: white;margin-top: 4px;"> Delete</a>

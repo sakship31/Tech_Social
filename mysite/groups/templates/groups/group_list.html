@@ -10,17 +10,17 @@
 		</h2>
 
     {% endif %}
-			<h2>Groups</h2>
+			<h2>Spaces</h2>
 
-			<p>Join a Group with a shared interest and be the part of the community!</p>
+			<h4 style="margin-bottom: 20px;">Join a Space with a shared interest and be the part of the community!</h4>
 	</div>
 	{% if user.is_authenticated %}
-	<a href="{% url 'groups:create' %}" class="btn btn-md btn-fill btn-warning"><span class="glyphicon glyphicon-plus-sign"></span> Create New Group!</a>
+	<a href="{% url 'groups:create' %}" class="btn btn-md btn-fill btn-warning"><span class="glyphicon glyphicon-plus-sign"></span> Create New Space!</a>
 	{% endif %}
 
 </div>
 
-
+{% if object_list %}
 <div class="col-md-6 intro" style="margin-top: 6px;">
 	<h3>Spaces you follow!</h3>
 	<div class="list-group">
@@ -68,4 +68,10 @@
 		{% endfor %}
 	</div>
 </div>
+{% else %}
+<div class="col-md-12 intro" style="margin-top: 10px;font-size: xx-large;">
+	No space yet! Create one to get started!
+</div>
+
+{% endif %}
 {% endblock %}
