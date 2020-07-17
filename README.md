@@ -30,24 +30,24 @@ Tech Social has following features-
 6)Explore other groups: Users are also provided with the groups they don't follow alongwith the groups they follow so that they can check the group contents and join if interested and in turn post questions/comment. 
 
 ----------------------------------------------------------------------------------------
-### Signup/Login ###
-![](https://github.com/sakship31/Tech_Social/blob/master/image_gifs/Capture5.PNG) ![](https://github.com/sakship31/Tech_Social/blob/master/image_gifs/Capture6.PNG)
-### Create Space(Group) ###
-![](https://github.com/sakship31/Tech_Social/blob/master/image_gifs/Capture3.PNG)
-### Create Post ###
-![](https://github.com/sakship31/Tech_Social/blob/master/image_gifs/Capture7.PNG)
 ### Adding comment after joining group ###
 ![](https://github.com/sakship31/Tech_Social/blob/master/image_gifs/add_comment.gif)
 ### Check other user's/your post history and delete post ###
 ![](https://github.com/sakship31/Tech_Social/blob/master/image_gifs/delete_post.gif)
 #### Deleting our comment ####
 ![](https://github.com/sakship31/Tech_Social/blob/master/image_gifs/delete_comment.gif)
+### Create Space(Group) ###
+![](https://github.com/sakship31/Tech_Social/blob/master/image_gifs/Capture3.PNG)
+### Create Post ###
+![](https://github.com/sakship31/Tech_Social/blob/master/image_gifs/Capture7.PNG)
 ### Groups page ###
 ![](https://github.com/sakship31/Tech_Social/blob/master/image_gifs/Capture8.PNG)
 ### Posts in group page ###
 ![](https://github.com/sakship31/Tech_Social/blob/master/image_gifs/Capture10.PNG)
 ### Post detail with comments page ###
 ![](https://github.com/sakship31/Tech_Social/blob/master/image_gifs/Capture11.PNG)
+### Signup/Login ###
+![](https://github.com/sakship31/Tech_Social/blob/master/image_gifs/Capture5.PNG) ![](https://github.com/sakship31/Tech_Social/blob/master/image_gifs/Capture6.PNG)
 ### Log Out ###
 ![](https://github.com/sakship31/Tech_Social/blob/master/image_gifs/Capture2.PNG)
 ---------------------------------------------------------------------------------------
