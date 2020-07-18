@@ -57,7 +57,7 @@ Install the dependencies by running:
 ```html  
     pip install pillow
     pip3 install django-braces
-    pip install misaka
+    pip install django-misaka
 ```
 
 #### Run using Command Prompt
